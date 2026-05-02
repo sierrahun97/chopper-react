@@ -1,0 +1,451 @@
+.empty-cart-message {
+    text-align: center;
+    font-size: 20px;
+    color: #555;
+    padding: 30px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries para hacerlo más responsivo */
+@media (max-width: 1200px) {
+    .empty-cart-message {
+        font-size: 18px;
+        padding: 25px;
+        margin: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .empty-cart-message {
+        font-size: 17px;
+        padding: 20px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .empty-cart-message {
+        font-size: 16px;
+        padding: 15px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .empty-cart-message {
+        font-size: 15px;
+        padding: 12px;
+        margin: 5px;
+    }
+}
+
+
+.card-subscription {
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 45px;
+    margin-top: 5rem;
+}
+
+.card-carousel-container {
+    width: 90%;
+    height: 400px;
+    overflow: hidden;
+    margin: 20px auto;
+    position: relative;
+}
+
+.card-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 30px; 
+    transition: transform 0.3s ease;
+}
+
+.card-product-subscription {
+    width: calc((100% / 5) - 20px); /* 20px es el espacio total para 5 tarjetas */
+}
+
+.card-product-subscription {
+    display: flex; /* Usa Flexbox para alinear el contenido de la tarjeta */
+    flex-direction: column; /* Alinea los elementos en columna */
+    justify-content: space-between;
+    align-items: center;
+    text-align: center; 
+    padding: 20px;
+    width: 300px; /* Ancho de la tarjeta */
+    height: 100%;
+    border-radius: 20px;
+    border: 1px solid #ddd; /* Borde alrededor de la tarjeta */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card-product-image img {
+    width: 100%; /* La imagen ocupa todo el ancho disponible */
+    height: auto;
+    object-fit: cover; /* Mantiene el aspecto de la imagen */
+    border-radius: 8px;
+}
+
+.card-product-info {
+    width: 100%;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.card-product-info h3 {
+    margin-top: 10px;
+    font-family: "Poppins";
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card-product-info p {
+    font-family: "Jost";
+    font-size: 0.9rem;
+}
+
+.card-product-price {
+    font-family: "Jost";
+    font-size: 1rem !important; 
+    font-weight: 600;
+    color: red;
+}
+
+/* Boton añadir */
+.add-cart {
+    width: 160px;
+    background-color: #955EB7;
+    color: white;
+    border: none;
+    border-color: #955EB7;
+    border-radius: 60px;
+    font-family: "Jost";
+    font-size: 0.9rem;
+}
+
+.add-cart:hover {
+    background-color: white;
+    color: #955EB7;
+    border: solid 1px #955EB7;
+}
+
+/* Botones de control del carrusel */
+.card-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.card-carousel-btn.left {
+    left: 0;
+}
+
+.card-carousel-btn.right {
+    right: 0;
+}
+
+/*----- Responsive -----*/
+
+@media (max-width: 834px) {
+    .card-carousel-container {
+        width: 95%;
+        height: 290px;
+    }
+
+    .card-container {
+        height: 100%;
+        gap: 30px;
+    }
+
+    .card-product-subscription {
+        width: 187px;
+        padding: 17px 29px;
+        flex: 1 0 auto;
+    }
+    
+    .card-product-info h3 {
+        font-size: 1rem;
+        margin: 0px;
+    }
+
+    .card-product-info p {
+        font-size: 0.7rem;
+        margin: 0px;
+    }
+    
+    .add-cart{
+        width: 100%;
+    }
+
+    .card-carousel-btn {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 390px) {
+    .card-carousel-container {
+        height: 263px;
+        width: 100%;
+    }
+
+    .card-container {
+        gap: 10px;
+    }
+
+    .card-product-subscription {
+        width: 169px;
+        padding: 10px 20px;
+    }
+
+    .card-product-info h3 {
+        font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+    }
+
+    .card-product-price {
+        font-size: 0.8rem !important; /* Reducir aún más el tamaño de fuente */
+    }
+
+    .add-cart {
+        width: 100%; /* Botón ocupa todo el ancho */
+        font-size: 0.9rem; /* Ajuste del tamaño de fuente en el botón */
+    }
+
+    /* Ajuste de botones del carrusel */
+    .card-carousel-btn {
+        padding: 6px; /* Botones más pequeños en pantallas pequeñas */
+    }
+}
+
+
+/* ----- Catalogo ----- */
+.sections-titles {
+    width: 100vw;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.catalog-section {
+    width: 100vw;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-evenly;
+    justify-items: start;
+    gap: 25px;
+}
+
+.catalog-filter {
+    width: 15vw;
+    font-size: small;
+}
+
+.catalog-filter h6 {
+    font-family: "Poppins";
+    font-size: 1.2rem;
+}
+
+.catalog-filter button {
+    font-family: "Jost";
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+}
+
+.catalog-products {
+    width: 80vw;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 20px;
+}
+
+.item-catalog {
+    width: 36vw;
+    max-height: 30vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    gap: 2vw;
+}
+
+.img-product img {
+    width: 12vw;
+    min-width: 120px;
+    border-radius: 12px;
+}
+
+.info-product {
+    text-wrap: wrap;
+    min-width: min-content;
+    font-size: small;
+}
+
+.info-product h5 {
+    font-family: "Poppins";
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.info-product p {
+    font-family: "Jost";
+    font-size: 0.9rem;
+    line-height: 15px;
+}
+
+#product-price {
+    font-size: large;
+    color: #8d0c0c;
+    font-weight: 700;
+    line-height: 10px;
+}
+
+.info-product button {
+    width: 100px;
+    padding: 5px;
+    background-color: #955EB7;
+    color: white;
+    font-family: "Jost";
+    border: none;
+    border-radius: 5px;
+}
+
+.info-product button:hover {
+    border: #955EB7 solid 2px;
+    background-color: white;
+    color: #955EB7;
+}
+
+@media (max-width: 1000px) {
+    .catalog-section {
+        flex-direction: column;
+    }
+
+    .catalog-filter {
+        width: 100vw;
+    }
+
+    .filter-content hr {
+        display: none;
+    }
+
+    .filter-content {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .catalog-products {
+        width: 90vw;
+        justify-content: space-between;
+    }
+
+    .item-catalog {
+        width: 43vw;
+        min-width: 350px;
+        max-height: 35vh;
+    }
+
+    .img-product img {
+        width: 15vw;
+        min-width: 180px;
+    }
+
+    .info-product {
+        font-size: small;
+    }
+}
+
+@media (max-width: 810px) {
+    .catalog-products {
+        width: 90vw;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .item-catalog {
+        width: 80vw;
+        min-width: 420px;
+        font-size: 1vw;
+    }
+
+    .img-product img {
+        width: 18vw;
+        min-width: 140px;
+    }
+}
+
+@media (max-width: 550px) {
+    .catalog-section {
+        padding: 20px;
+    }
+
+    .catalog-filter {
+        justify-content: left;
+        width: 90vw;
+    }
+
+    .filter-content {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 10px;
+    }
+
+    .catalog-products {
+        align-items: center;
+    }
+
+    .item-catalog {
+        flex-direction: column;
+        width: 60vw;
+        min-width: 200px;
+        height: fit-content;
+        max-height: none;
+        font-size: small;
+    }
+
+    .img-product img {
+        width: 30vw;
+    }
+}
