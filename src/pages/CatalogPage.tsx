@@ -1,18 +1,18 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCart } from "../contexts/CartContext";
 import {
   FEATURED_PRODUCTS,
   HERO_BANNERS,
   type Product,
 } from "../data/mockData";
-import { getAdminProducts } from "../services/productService";
+import {
+  getAdminProducts,
+  type AdminProduct,
+} from "../services/productService";
 
-function mapAdminToProduct(
-  p: ReturnType<typeof getAdminProducts>[number],
-  index: number,
-): Product {
+function mapAdminToProduct(p: AdminProduct, index: number): Product {
   return {
-    id: 1000 + index,
+    id: p.id_producto || 1000 + index,
     name: p.nombre_producto,
     category: p.categoria_producto,
     description: p.descripcion_producto,
@@ -25,9 +25,19 @@ export function CatalogPage() {
   const { addToCart } = useCart();
   const [bannerIndex, setBannerIndex] = useState(0);
   const [cardIndex, setCardIndex] = useState(0);
-  const [adminProducts] = useState<Product[]>(() =>
-    getAdminProducts().map(mapAdminToProduct),
-  );
+  const [adminProducts, setAdminProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function loadAdminProducts() {
+      try {
+        const dbProducts = await getAdminProducts();
+        setAdminProducts(dbProducts.map(mapAdminToProduct));
+      } catch (error) {
+        console.error("Error loading admin products:", error);
+      }
+    }
+    loadAdminProducts();
+  }, []);
 
   const visibleCards = 5;
   const maxCardIndex = Math.max(FEATURED_PRODUCTS.length - visibleCards, 0);

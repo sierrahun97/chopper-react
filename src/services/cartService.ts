@@ -1,9 +1,3 @@
-/**
- * cartService.ts
- * Gestiona la persistencia del carrito de compras en localStorage.
- * Requerimiento tarea.md: carpeta services/ para datos simulados (Mocks).
- */
-
 export type CartItem = {
   id: number;
   name: string;

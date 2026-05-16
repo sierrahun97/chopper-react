@@ -1,9 +1,3 @@
-/**
- * userService.ts
- * Gestiona la persistencia de usuarios y sesión en localStorage.
- * Requerimiento tarea.md: carpeta services/ para datos simulados (Mocks).
- */
-
 export type User = {
   nombre: string;
   email: string;

@@ -1,18 +1,46 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { TRANSPARENT_PIXEL } from "../data/mockData";
 
 export function CartModal() {
   const { items, isOpen, closeCart, totalValue, addOne, removeOne } = useCart();
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    closeCart();
+    navigate("/checkout");
+  };
 
   return (
     <div id="cart-modal" className={`modal ${isOpen ? "show" : ""}`}>
-      <div className="modal-content">
-        <div className="close-cart">
-          <p className="close" onClick={closeCart}>
-            &times;
-          </p>
-        </div>
-        <h2>Tu Carrito</h2>
+      <div className="modal-content" style={{ position: "relative" }}>
+        <button
+          className="close-cart-btn"
+          onClick={closeCart}
+          style={{
+            position: "absolute",
+            top: "15px",
+            right: "15px",
+            background: "#f1f1f1",
+            border: "none",
+            borderRadius: "50%",
+            width: "35px",
+            height: "35px",
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+            color: "#333",
+            zIndex: 3010,
+          }}
+          title="Cerrar carrito"
+        >
+          &times;
+        </button>
+        <h2 style={{ marginTop: "10px" }}>Tu Carrito</h2>
         <div id="cart-items">
           {items.length === 0 ? (
             <div className="empty-cart-message">
@@ -48,7 +76,12 @@ export function CartModal() {
           )}
         </div>
         <p id="cart-total">Total: ${totalValue.toLocaleString()}</p>
-        <button id="checkout-btn" className="btn-pay" type="button">
+        <button
+          id="checkout-btn"
+          className="btn-pay"
+          type="button"
+          onClick={handleCheckout}
+        >
           Pagar
         </button>
       </div>

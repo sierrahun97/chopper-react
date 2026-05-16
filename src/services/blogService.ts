@@ -1,9 +1,3 @@
-/**
- * blogService.ts
- * Gestiona la persistencia de likes del blog en localStorage.
- * Requerimiento tarea.md: carpeta services/ para datos simulados (Mocks).
- */
-
 import { BLOG_POSTS } from "../data/mockData";
 
 const LIKE_KEY = "blog-likes";
