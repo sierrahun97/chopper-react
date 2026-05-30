@@ -52,6 +52,12 @@ export function LoginPage() {
   const onLogin = (event: FormEvent) => {
     event.preventDefault();
 
+    if (!loginData.email || !loginData.password) {
+      setType("error");
+      setMessage("Por favor, ingresa tu correo y contraseña.");
+      return;
+    }
+
     const result = login(loginData.email, loginData.password);
     setType(result.ok ? "success" : "error");
     setMessage(result.message);
@@ -101,6 +107,19 @@ export function LoginPage() {
                 value="Iniciar sesión"
                 className="btn solid"
               />
+              {!isSignup && message && (
+                <p
+                  style={{
+                    color: type === "error" ? "#bb281e" : "#0EB1D2",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    marginTop: "10px",
+                    fontSize: "0.92rem",
+                  }}
+                >
+                  {message}
+                </p>
+              )}
               <p className="social-text">
                 Volver al{" "}
                 <strong
